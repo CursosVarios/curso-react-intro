@@ -1,7 +1,8 @@
 function TodoCouter(props) {
+  const { completed, total } = props;
   return (
     <h1>
-      Has Completado {props.completed} de {props.total}
+      Has Completado {completed} de {total}
     </h1>
   );
 }

@@ -1,12 +1,11 @@
 function TodoItem(props) {
+  const { todo } = props;
   return (
-    <>
-      <li>
-        <span>v</span>
-        <p>hacer ejercicios de React</p>
-        <span>x</span>
-      </li>
-    </>
+    <li>
+      <span>v</span>
+      <p>{todo.title}</p>
+      <span>x</span>
+    </li>
   );
 }
 export { TodoItem };
