@@ -1,7 +1,7 @@
 import './TodoSearch.css'
 
 function TodoSearch(props) {
-  return <input placeholder="cortar" />;
+  return <input  className="TodoSearch" placeholder="cortar" />;
 }
 
 export { TodoSearch };
