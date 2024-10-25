@@ -1,15 +1,10 @@
-const style = {
-  fontSize: "24px",
-  textAlign: "center",
-  margin: "0",
-  padding: "48px",
-  fontWeight: "bold",
-};
+import "./TodoCounter.css";
 function TodoCouter(props) {
   const { completed, total } = props;
   return (
-    <h1 style={style}>
-      Has Completado {completed} de {total}
+    <h1 className="TodoCounter">
+      Has completado <span>{completed}</span>
+      de <span>{total}</span>
     </h1>
   );
 }
