@@ -20,12 +20,11 @@ function App() {
   const [todos, setTodos] = useState(defaultTodos);
   const total = todos.length;
   const completed = todos.filter((x) => x.completed).length;
-  const filteredTodos = search
-    ? todos.filter((todo) =>
-        todo.title.toLowerCase().includes(search.toLowerCase())
-      )
-    : todos;
-
+  const searchLowerCase = search.toLowerCase();
+  const filteredTodos = todos.filter(
+    (todo) =>
+      !searchLowerCase || todo.title.toLowerCase().includes(searchLowerCase)
+  );
   return (
     <>
       <TodoCouter completed={completed} total={total} />
