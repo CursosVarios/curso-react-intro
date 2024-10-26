@@ -12,12 +12,21 @@ function AppUI({
   filteredTodos,
   onComplete,
   onDelete,
+  loading,
+  error,
 }) {
   return (
     <>
       <TodoCounter completed={completed} total={total} />
       <TodoSearch search={search} setSearch={setSearch} />
       <TodoList>
+        {loading
+          ? "cargando..."
+          : error
+          ? "Hubo un error"
+          : filteredTodos.length === 0
+          ? "No hay tareas"
+          : ""}
         {filteredTodos.map((todo, key) => (
           <TodoItem
             key={"todoItem" + key}

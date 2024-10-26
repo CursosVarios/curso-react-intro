@@ -16,7 +16,12 @@ localStorage.setItem("todos", JSON.stringify(defaultTodos));*/
 
 function App() {
   const [search, setSearch] = useState("");
-  const [todos, saveTodos] = useLocalStorage("todos", []);
+  const {
+    item: todos,
+    saveItem: saveTodos,
+    loading,
+    error,
+  } = useLocalStorage("todos", []);
 
   const total = todos.length;
   const completed = todos.filter((x) => x.completed).length;
@@ -46,6 +51,8 @@ function App() {
         filteredTodos={filteredTodos}
         onComplete={onComplete}
         onDelete={onDelete}
+        loading={loading}
+        error={error}
       />
     </>
   );
