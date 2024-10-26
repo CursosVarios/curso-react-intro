@@ -5,6 +5,7 @@ const TodoContext = createContext();
 
 function TodoProvider({ children }) {
   const [search, setSearch] = useState("");
+  const [activeModal, setActiveModal] = useState(false);
   const {
     item: todos,
     saveItem: saveTodos,
@@ -31,6 +32,13 @@ function TodoProvider({ children }) {
     saveTodos(newTodos);
   };
 
+  const openModal = () => {
+    setActiveModal(true);
+  };
+  const closeModal = () => {
+    setActiveModal(false);
+  };
+
   return (
     <TodoContext.Provider
       value={{
@@ -43,6 +51,9 @@ function TodoProvider({ children }) {
         onDelete,
         loading,
         error,
+        activeModal,
+        openModal,
+        closeModal,
       }}
     >
       {children}
