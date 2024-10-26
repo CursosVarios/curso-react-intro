@@ -1,3 +1,5 @@
+import { CompleteIcon } from "./CompleteIcon";
+import { DeleteIcon } from "./DeleteIcon";
 import "./TodoItem.css";
 
 function TodoItem(props) {
@@ -5,6 +7,7 @@ function TodoItem(props) {
 
   return (
     <li className="TodoItem">
+      <CompleteIcon  onClick={() => onComplete(todo)}/>
       <span
         className={`Icon Icon-check ${
           todo.completed ? "Icon-check--active" : ""
@@ -18,6 +21,7 @@ function TodoItem(props) {
       >
         {todo.title}
       </p>
+      <DeleteIcon   onClick={() => onDelete(todo)}/>
       <span className="Icon Icon-delete" onClick={() => onDelete(todo)}>
         x
       </span>
