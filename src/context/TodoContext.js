@@ -39,6 +39,12 @@ function TodoProvider({ children }) {
     setActiveModal(false);
   };
 
+  const addTodo = (todo) => {
+    todo.id = todos.reduce((prev, x) => (x.id > prev ? x.id : prev), 0) + 1;
+    const newTodos = [...todos, todo];
+    saveTodos(newTodos);
+    closeModal();
+  };
   return (
     <TodoContext.Provider
       value={{
@@ -54,6 +60,7 @@ function TodoProvider({ children }) {
         activeModal,
         openModal,
         closeModal,
+        addTodo,
       }}
     >
       {children}

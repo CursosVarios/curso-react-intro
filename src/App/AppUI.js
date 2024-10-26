@@ -2,6 +2,7 @@ import { CreateTodoButton } from "../components/CreateTodoButton/CreateTodoButto
 import { Modal } from "../components/Modal/Modal";
 import { TodoCounter } from "../components/TodoCounter/TodoCounter";
 import { TodoEmpty } from "../components/TodoEmpty/TodoEmpty";
+import { TodoForm } from "../components/TodoForm/TodoForm";
 import { TodoItem } from "../components/TodoItem/TodoItem";
 import { TodoList } from "../components/TodoList/TodoList";
 import { TodoSearch } from "../components/TodoSearch/TodoSearch";
@@ -44,7 +45,13 @@ function AppUI() {
 
       <TodoContext.Consumer>
         {({ activeModal }) =>
-          !activeModal ? "" : <Modal>La funciin de agregar todo</Modal>
+          !activeModal ? (
+            ""
+          ) : (
+            <Modal>
+              <TodoForm />
+            </Modal>
+          )
         }
       </TodoContext.Consumer>
     </>
