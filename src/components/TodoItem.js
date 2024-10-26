@@ -7,24 +7,16 @@ function TodoItem(props) {
 
   return (
     <li className="TodoItem">
-      <CompleteIcon  onClick={() => onComplete(todo)}/>
-      <span
-        className={`Icon Icon-check ${
-          todo.completed ? "Icon-check--active" : ""
-        }`}
+      <CompleteIcon
+        completed={todo.completed}
         onClick={() => onComplete(todo)}
-      >
-        v
-      </span>
+      />
       <p
         className={`TodoItem-p ${todo.completed ? "TodoItem-p--complete" : ""}`}
       >
         {todo.title}
       </p>
-      <DeleteIcon   onClick={() => onDelete(todo)}/>
-      <span className="Icon Icon-delete" onClick={() => onDelete(todo)}>
-        x
-      </span>
+      <DeleteIcon onClick={() => onDelete(todo)} />
     </li>
   );
 }
