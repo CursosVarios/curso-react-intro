@@ -1,5 +1,5 @@
 import "./TodoCounter.css";
-function TodoCouter(props) {
+function TodoCounter(props) {
   const { completed, total } = props;
   if (total === completed) {
     return <h1 className="TodoCounter">Todos completados!</h1>;
@@ -12,4 +12,4 @@ function TodoCouter(props) {
   );
 }
 
-export { TodoCouter };
+export { TodoCounter };
