@@ -1,7 +1,12 @@
-import './TodoSearch.css'
+import "./TodoSearch.css";
 
 function TodoSearch(props) {
-  return <input  className="TodoSearch" placeholder="cortar" />;
+  const action = (event) => {
+    console.log(event.target.value);
+  };
+  return (
+    <input className="TodoSearch" placeholder="cortar" onChange={action} />
+  );
 }
 
 export { TodoSearch };
