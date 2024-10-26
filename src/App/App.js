@@ -1,8 +1,6 @@
-import { useState } from "react";
+import { TodoProvider } from "../context/TodoContext";
 import "./App.css";
 import { AppUI } from "./AppUI";
-import { useLocalStorage } from "../context/useLocalStotage";
-import { TodoProvider } from "../context/TodoContext";
 /*
 const defaultTodos = [
   { id: 1, title: "Buy groceries", completed: false },
