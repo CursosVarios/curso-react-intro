@@ -5,7 +5,7 @@ import { TodoCouter } from "./components/TodoCounter";
 import { TodoItem } from "./components/TodoItem";
 import { TodoList } from "./components/TodoList";
 import { TodoSearch } from "./components/TodoSearch";
-
+/*
 const defaultTodos = [
   { id: 1, title: "Buy groceries", completed: false },
   { id: 2, title: "Complete homework", completed: false },
@@ -14,9 +14,14 @@ const defaultTodos = [
   { id: 5, title: "Pick up dry cleaning2", completed: false },
   { id: 6, title: "Pick up dry cleaning3", completed: true },
 ];
+
+localStorage.setItem("todos", JSON.stringify(defaultTodos));*/
+
 function App() {
+  let parsedTodos = JSON.parse(localStorage.getItem("todos") ?? "[]");
+  console.log(parsedTodos);
   const [search, setSearch] = useState("");
-  const [todos, setTodos] = useState(defaultTodos);
+  const [todos, setTodos] = useState(parsedTodos);
 
   const total = todos.length;
   const completed = todos.filter((x) => x.completed).length;
@@ -25,15 +30,21 @@ function App() {
     (todo) =>
       !searchLowerCase || todo.title.toLowerCase().includes(searchLowerCase)
   );
+
+  const saveTodos = (newTodos) => {
+    localStorage.setItem("todos", JSON.stringify(newTodos));
+    setTodos(newTodos);
+  };
+
   const onComplete = (todo) => {
     const newTodos = [...todos];
     const index = newTodos.findIndex((x) => x.title === todo.title);
-    newTodos[index].completed =!newTodos[index].completed;
-    setTodos(newTodos);
+    newTodos[index].completed = !newTodos[index].completed;
+    saveTodos(newTodos);
   };
   const onDelete = (todo) => {
-    const newTodos = todos.filter((x) => x.title!== todo.title);
-    setTodos(newTodos);
+    const newTodos = todos.filter((x) => x.title !== todo.title);
+    saveTodos(newTodos);
   };
   return (
     <>
