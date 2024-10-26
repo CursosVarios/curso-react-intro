@@ -17,11 +17,28 @@ const defaultTodos = [
 
 localStorage.setItem("todos", JSON.stringify(defaultTodos));*/
 
+function useLocalStorage(itemName, initialValue) {
+  const localStorageItem = localStorage.getItem(itemName);
+  let parsedItem;
+  if (localStorageItem) {
+    parsedItem = JSON.parse(localStorageItem);
+  } else {
+    localStorage.setItem(JSON.stringify(initialValue));
+    parsedItem = initialValue;
+  }
+
+  const [item, setItem] = useState(parsedItem);
+  const saveItem = (newItem) => {
+    localStorage.setItem(itemName, JSON.stringify(newItem));
+    setItem(newItem);
+  };
+
+  return [item, saveItem];
+}
+
 function App() {
-  let parsedTodos = JSON.parse(localStorage.getItem("todos") ?? "[]");
-  console.log(parsedTodos);
   const [search, setSearch] = useState("");
-  const [todos, setTodos] = useState(parsedTodos);
+  const [todos, saveTodos] = useLocalStorage("todos", []);
 
   const total = todos.length;
   const completed = todos.filter((x) => x.completed).length;
@@ -30,11 +47,6 @@ function App() {
     (todo) =>
       !searchLowerCase || todo.title.toLowerCase().includes(searchLowerCase)
   );
-
-  const saveTodos = (newTodos) => {
-    localStorage.setItem("todos", JSON.stringify(newTodos));
-    setTodos(newTodos);
-  };
 
   const onComplete = (todo) => {
     const newTodos = [...todos];
