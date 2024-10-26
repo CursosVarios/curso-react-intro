@@ -1,6 +1,9 @@
 import "./TodoCounter.css";
 function TodoCouter(props) {
   const { completed, total } = props;
+  if (total === completed) {
+    return <h1 className="TodoCounter">Todos completados!</h1>;
+  }
   return (
     <h1 className="TodoCounter">
       Has completado <span>{completed}</span>

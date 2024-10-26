@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "./TodoSearch.css";
 
 function TodoSearch(props) {
@@ -17,3 +16,4 @@ function TodoSearch(props) {
 }
 
 export { TodoSearch };
+

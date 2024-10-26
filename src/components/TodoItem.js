@@ -1,7 +1,7 @@
 import "./TodoItem.css";
 
 function TodoItem(props) {
-  const { todo } = props;
+  const { todo, onComplete, onDelete } = props;
 
   return (
     <li className="TodoItem">
@@ -9,6 +9,7 @@ function TodoItem(props) {
         className={`Icon Icon-check ${
           todo.completed ? "Icon-check--active" : ""
         }`}
+        onClick={() => onComplete(todo)}
       >
         v
       </span>
@@ -17,7 +18,9 @@ function TodoItem(props) {
       >
         {todo.title}
       </p>
-      <span className="Icon Icon-delete">x</span>
+      <span className="Icon Icon-delete" onClick={() => onDelete(todo)}>
+        x
+      </span>
     </li>
   );
 }
