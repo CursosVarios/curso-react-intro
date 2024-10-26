@@ -1,10 +1,10 @@
 import { useState } from "react";
 import "./App.css";
-import { CreateTodoButton } from "./components/CreateTodoButton";
-import { TodoCouter } from "./components/TodoCounter";
-import { TodoItem } from "./components/TodoItem";
-import { TodoList } from "./components/TodoList";
-import { TodoSearch } from "./components/TodoSearch";
+import { CreateTodoButton } from "../components/CreateTodoButton/CreateTodoButton";
+import { TodoCouter } from "../components/TodoCounter/TodoCounter";
+import { TodoItem } from "../components/TodoItem/TodoItem";
+import { TodoList } from "../components/TodoList/TodoList";
+import { TodoSearch } from "../components/TodoSearch/TodoSearch";
 /*
 const defaultTodos = [
   { id: 1, title: "Buy groceries", completed: false },
