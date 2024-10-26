@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import { AppUI } from "./AppUI";
+import { useLocalStorage } from "./useLocalStotage";
 /*
 const defaultTodos = [
   { id: 1, title: "Buy groceries", completed: false },
@@ -12,25 +13,6 @@ const defaultTodos = [
 ];
 
 localStorage.setItem("todos", JSON.stringify(defaultTodos));*/
-
-function useLocalStorage(itemName, initialValue) {
-  const localStorageItem = localStorage.getItem(itemName);
-  let parsedItem;
-  if (localStorageItem) {
-    parsedItem = JSON.parse(localStorageItem);
-  } else {
-    localStorage.setItem(JSON.stringify(initialValue));
-    parsedItem = initialValue;
-  }
-
-  const [item, setItem] = useState(parsedItem);
-  const saveItem = (newItem) => {
-    localStorage.setItem(itemName, JSON.stringify(newItem));
-    setItem(newItem);
-  };
-
-  return [item, saveItem];
-}
 
 function App() {
   const [search, setSearch] = useState("");
