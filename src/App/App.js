@@ -1,7 +1,8 @@
 import { useState } from "react";
 import "./App.css";
 import { AppUI } from "./AppUI";
-import { useLocalStorage } from "./useLocalStotage";
+import { useLocalStorage } from "../context/useLocalStotage";
+import { TodoProvider } from "../context/TodoContext";
 /*
 const defaultTodos = [
   { id: 1, title: "Buy groceries", completed: false },
@@ -15,46 +16,10 @@ const defaultTodos = [
 localStorage.setItem("todos", JSON.stringify(defaultTodos));*/
 
 function App() {
-  const [search, setSearch] = useState("");
-  const {
-    item: todos,
-    saveItem: saveTodos,
-    loading,
-    error,
-  } = useLocalStorage("todos", []);
-
-  const total = todos.length;
-  const completed = todos.filter((x) => x.completed).length;
-  const searchLowerCase = search.toLowerCase();
-  const filteredTodos = todos.filter(
-    (todo) =>
-      !searchLowerCase || todo.title.toLowerCase().includes(searchLowerCase)
-  );
-
-  const onComplete = (todo) => {
-    const newTodos = [...todos];
-    const index = newTodos.findIndex((x) => x.title === todo.title);
-    newTodos[index].completed = !newTodos[index].completed;
-    saveTodos(newTodos);
-  };
-  const onDelete = (todo) => {
-    const newTodos = todos.filter((x) => x.title !== todo.title);
-    saveTodos(newTodos);
-  };
   return (
-    <>
-      <AppUI
-        completed={completed}
-        total={total}
-        search={search}
-        setSearch={setSearch}
-        filteredTodos={filteredTodos}
-        onComplete={onComplete}
-        onDelete={onDelete}
-        loading={loading}
-        error={error}
-      />
-    </>
+    <TodoProvider>
+      <AppUI />
+    </TodoProvider>
   );
 }
 
