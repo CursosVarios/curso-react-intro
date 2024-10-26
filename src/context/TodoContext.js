@@ -40,6 +40,15 @@ function TodoProvider({ children }) {
   };
 
   const addTodo = (todo) => {
+    const titleLowerCase = todo.title.toLowerCase();
+    const exist =
+      todos.findIndex((todoSelect) =>
+        todoSelect.title.toLowerCase().includes(titleLowerCase)
+      ) !== -1;
+    if (exist) {
+      alert("El todo ya existe");
+      return;
+    }
     todo.id = todos.reduce((prev, x) => (x.id > prev ? x.id : prev), 0) + 1;
     const newTodos = [...todos, todo];
     saveTodos(newTodos);
