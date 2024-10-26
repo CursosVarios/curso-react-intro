@@ -4,14 +4,17 @@ import { TodoContext } from "../../context/TodoContext";
 function TodoForm() {
   const [name, setName] = useState("");
   const { closeModal, addTodo } = useContext(TodoContext);
-  const cancel = () => {
+  const cancel = (event) => {
+    event.preventDefault();
     closeModal();
     console.log("Cancelar");
   };
   const createTodo = (event) => {
+    event.preventDefault();
     const newTodo = { title: name, completed: false };
     addTodo(newTodo);
   };
+
   return (
     <form className="TodoForm">
       <textarea
@@ -32,6 +35,7 @@ function TodoForm() {
           type="button"
           className="TodoForm-button TodoForm-button--add"
           onClick={createTodo}
+          disabled={name === ""}
         >
           Crear
         </button>

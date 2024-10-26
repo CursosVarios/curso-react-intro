@@ -16,7 +16,12 @@
   font-size: 16px;
   transition: all 0.3s ease 0s;
 }
+.TodoForm-button:disabled{
+  background-color: #ccc;
+  color: #333;
+  cursor: not-allowed;
 
+}
 .TodoForm-button--cancel{
   background-color: #f44336;
   color: #fff;
@@ -27,11 +32,11 @@
   color: #fff;
 }
 
-.TodoForm-button--cancel:hover{
+.TodoForm-button--cancel:hover:not(:disabled){
   background-color: #e53935;
 }
 
-.TodoForm-button--add:hover{
+.TodoForm-button--add:hover:not(:disabled){
   background-color: #3e8e41;
 }
 
